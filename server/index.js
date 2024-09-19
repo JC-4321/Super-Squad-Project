@@ -1,4 +1,4 @@
-// Required modulesconst express = require('express');
+const express = require('express');
 const path = require('path');
 const fs = require('fs').promises;
 
@@ -58,11 +58,11 @@ app.post('/submit-form', async (req, res) => {
         }
 
         // Find or create user
-        let user = users.find(u => u.name === name && u.email === email);
+        let user = users.find(u => u.name === name && u.message === message);
         if (user) {
             user.messages.push(message);
         } else {
-            user = { name, email, messages: [message] };
+            user = { name, messages: [message] };
             users.push(user);
         }
 
